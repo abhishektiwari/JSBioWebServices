@@ -1,0 +1,21 @@
+== JSBioWebServices
+
+JavaScript SOAP Client for Bio web services such as NCBI, EBI, KEGG etc
+
+== Dependencies
+
+* jQuery
+
+
+
+== Help & Documentation
+For more information about installing, running and configuring JSBioWebServices
+including a list of known issues and troubleshooting information, 
+refer to: http://wiki.github.com/abhishektiwari/JSBioWebServices/
+
+
+== Authors and copyright
+© 2010 Abhishek Tiwari (abhishek@abhishek-tiwari.com)
+
+The software included in this package is copyrighted freeware
+distributed under the terms and conditions as specified in file LICENSE.

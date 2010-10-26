@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://webservice.jchem.chemaxon" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://webservice.jchem.chemaxon">
+    <wsdl:documentation>ChemicalTermsWS</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.jchem.chemaxon">
+            <xs:complexType name="Exception">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="Exception" nillable="true" type="xs:anyType"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Exception">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="Exception" nillable="true" type="ns:Exception"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="evaluateReturnNum">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="target" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="expression" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="evaluateReturnNumResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:float"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="evaluateReturnInt">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="target" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="expression" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="evaluateReturnIntResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="evaluateReturnString">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="target" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="expression" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="evaluateReturnStringResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="evaluateReturnIntRequest">
+        <wsdl:part name="parameters" element="ns:evaluateReturnInt"/>
+    </wsdl:message>
+    <wsdl:message name="evaluateReturnIntResponse">
+        <wsdl:part name="parameters" element="ns:evaluateReturnIntResponse"/>
+    </wsdl:message>
+    <wsdl:message name="Exception">
+        <wsdl:part name="parameters" element="ns:Exception"/>
+    </wsdl:message>
+    <wsdl:message name="evaluateReturnNumRequest">
+        <wsdl:part name="parameters" element="ns:evaluateReturnNum"/>
+    </wsdl:message>
+    <wsdl:message name="evaluateReturnNumResponse">
+        <wsdl:part name="parameters" element="ns:evaluateReturnNumResponse"/>
+    </wsdl:message>
+    <wsdl:message name="evaluateReturnStringRequest">
+        <wsdl:part name="parameters" element="ns:evaluateReturnString"/>
+    </wsdl:message>
+    <wsdl:message name="evaluateReturnStringResponse">
+        <wsdl:part name="parameters" element="ns:evaluateReturnStringResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ChemicalTermsWSPortType">
+        <wsdl:operation name="evaluateReturnInt">
+            <wsdl:input message="ns:evaluateReturnIntRequest" wsaw:Action="urn:evaluateReturnInt"/>
+            <wsdl:output message="ns:evaluateReturnIntResponse" wsaw:Action="urn:evaluateReturnIntResponse"/>
+            <wsdl:fault message="ns:Exception" name="Exception" wsaw:Action="urn:evaluateReturnIntException"/>
+        </wsdl:operation>
+        <wsdl:operation name="evaluateReturnNum">
+            <wsdl:input message="ns:evaluateReturnNumRequest" wsaw:Action="urn:evaluateReturnNum"/>
+            <wsdl:output message="ns:evaluateReturnNumResponse" wsaw:Action="urn:evaluateReturnNumResponse"/>
+            <wsdl:fault message="ns:Exception" name="Exception" wsaw:Action="urn:evaluateReturnNumException"/>
+        </wsdl:operation>
+        <wsdl:operation name="evaluateReturnString">
+            <wsdl:input message="ns:evaluateReturnStringRequest" wsaw:Action="urn:evaluateReturnString"/>
+            <wsdl:output message="ns:evaluateReturnStringResponse" wsaw:Action="urn:evaluateReturnStringResponse"/>
+            <wsdl:fault message="ns:Exception" name="Exception" wsaw:Action="urn:evaluateReturnStringException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ChemicalTermsWSSoap11Binding" type="ns:ChemicalTermsWSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="evaluateReturnInt">
+            <soap:operation soapAction="urn:evaluateReturnInt" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Exception">
+                <soap:fault use="literal" name="Exception"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="evaluateReturnNum">
+            <soap:operation soapAction="urn:evaluateReturnNum" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Exception">
+                <soap:fault use="literal" name="Exception"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="evaluateReturnString">
+            <soap:operation soapAction="urn:evaluateReturnString" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Exception">
+                <soap:fault use="literal" name="Exception"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ChemicalTermsWSSoap12Binding" type="ns:ChemicalTermsWSPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="evaluateReturnInt">
+            <soap12:operation soapAction="urn:evaluateReturnInt" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Exception">
+                <soap12:fault use="literal" name="Exception"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="evaluateReturnNum">
+            <soap12:operation soapAction="urn:evaluateReturnNum" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Exception">
+                <soap12:fault use="literal" name="Exception"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="evaluateReturnString">
+            <soap12:operation soapAction="urn:evaluateReturnString" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Exception">
+                <soap12:fault use="literal" name="Exception"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ChemicalTermsWSHttpBinding" type="ns:ChemicalTermsWSPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="evaluateReturnInt">
+            <http:operation location="ChemicalTermsWS/evaluateReturnInt"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="evaluateReturnInt"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="evaluateReturnInt"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="evaluateReturnNum">
+            <http:operation location="ChemicalTermsWS/evaluateReturnNum"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="evaluateReturnNum"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="evaluateReturnNum"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="evaluateReturnString">
+            <http:operation location="ChemicalTermsWS/evaluateReturnString"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="evaluateReturnString"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="evaluateReturnString"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ChemicalTermsWS">
+        <wsdl:port name="ChemicalTermsWSHttpSoap11Endpoint" binding="ns:ChemicalTermsWSSoap11Binding">
+            <soap:address location="http://62.112.195.223:80/axis2/services/ChemicalTermsWS.ChemicalTermsWSHttpSoap11Endpoint"/>
+        </wsdl:port>
+        <wsdl:port name="ChemicalTermsWSHttpSoap12Endpoint" binding="ns:ChemicalTermsWSSoap12Binding">
+            <soap12:address location="http://62.112.195.223:80/axis2/services/ChemicalTermsWS.ChemicalTermsWSHttpSoap12Endpoint"/>
+        </wsdl:port>
+        <wsdl:port name="ChemicalTermsWSHttpEndpoint" binding="ns:ChemicalTermsWSHttpBinding">
+            <http:address location="http://62.112.195.223:80/axis2/services/ChemicalTermsWS.ChemicalTermsWSHttpEndpoint"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
